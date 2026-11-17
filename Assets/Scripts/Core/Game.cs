@@ -22,6 +22,16 @@ namespace Fable
         Action<BattleResult> battleCallback;
         readonly List<GameScreen> stack = new List<GameScreen>();
 
+        // Unity 6.6 enters Play Mode without reloading scripts by default, so statics from the
+        // previous run survive. Clear them before anything else starts.
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStatics()
+        {
+            I = null;
+            Cam = null;
+            GameInput.Consume();
+        }
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void Boot()
         {

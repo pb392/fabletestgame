@@ -14,10 +14,16 @@ You can fight alone, or bind up to three wild creatures to fight beside you.
 
 ## Opening the project
 
-1. Open the folder in Unity Hub. The project targets **Unity 6 (6000.0 LTS)**; 2022.3 LTS should also work.
-2. Let Unity import. If it asks to enable the new Input System backend, either answer works: the game reads input through the Input System when it is active and falls back to the old Input Manager when it is not.
+1. Open the folder in Unity Hub with **Unity 6000.6.3f1** (Unity 6.6) on macOS.
+2. Let Unity import. If it asks to enable the Input System backend and restart, say yes. The game reads keyboard and gamepad through the Input System package, and falls back to the old Input Manager only if that is the active setting.
 3. Press **Play** in any scene, even the empty default one. The game builds itself in code (`Game.cs` boots automatically).
-4. For a standalone build, run **Fable > Create Boot Scene** once from the menu bar first.
+
+### Building the Mac app
+
+1. In Unity Hub, make sure the **Mac Build Support** module is installed for 6000.6.3f1.
+2. In the editor menu bar choose **Fable > Build macOS App**. It creates the one boot scene a build needs and writes `Builds/macOS/Fablebound.app`.
+
+The Input System package is pinned to 1.18.0 in `Packages/manifest.json`. If Unity reports it as incompatible, open **Window > Package Manager** and update Input System to the version it recommends.
 
 ## Controls
 
